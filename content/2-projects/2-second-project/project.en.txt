@@ -1,0 +1,37 @@
+Title: Second Project
+
+----
+
+Year: 2014
+
+----
+
+Tags: text,semantics,neural,cognitive
+
+----
+
+Description: Proviamo un'altra descrizione
+
+----
+
+Github: 
+
+----
+
+Gallery: haggar.jpg
+
+----
+
+Text: testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo testo
+
+----
+
+Collaborators: 
+
+----
+
+Cover: e3.jpg
+
+----
+
+Client: 

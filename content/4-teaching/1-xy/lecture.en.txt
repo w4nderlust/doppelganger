@@ -1,0 +1,31 @@
+Title: XY
+
+----
+
+Cover: bond.jpg
+
+----
+
+Date: 2015-07-01
+
+----
+
+Slides: indexing_vector_spaces_graph_search_engines.pdf
+
+----
+
+Tags: prima tag,seconda
+
+----
+
+Gallery: bond.jpg
+
+----
+
+Text: 
+
+Beautiful teching project.
+
+(youtube: https://www.youtube.com/watch?v=2P7dhHitOTk class: resp-video)
+
+Cool.

@@ -1,0 +1,41 @@
+Title: Fifth try
+
+----
+
+Cover: kraftwerk_cool.jpg
+
+----
+
+Year: 1899
+
+----
+
+Client: 
+
+----
+
+Tags: music,visual,art,processing
+
+----
+
+Github: 
+
+----
+
+Description: 
+
+----
+
+Gallery: 
+
+----
+
+Text: 
+
+----
+
+Collaborators: 
+
+----
+
+Client-website: 

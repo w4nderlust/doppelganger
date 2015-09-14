@@ -1,0 +1,41 @@
+Title: Introducing Serendipity in a Content-Based Recommender System
+
+----
+
+Authors: Leo Iaquinta, Marco de Gemmis, Pasquale Lops, Giovanni Semeraro, Michele Filannino, Piero Molino
+
+----
+
+Venue: HIS
+
+----
+
+Year: 2008
+
+----
+
+Tags: Serendipity,Recommender Systems
+
+----
+
+Paper: introducing-serendipity-in-a-content-based-recommender-system.pdf
+
+----
+
+Presentation: introducing-serendipity-in-a-content-based-recommender-system.pdf
+
+----
+
+Bibtex: http://dblp.uni-trier.de/rec/bibtex/conf/his/IaquintaGLSFM08
+
+----
+
+Github: http://github.com
+
+----
+
+Arxiv: http://arxiv.org
+
+----
+
+Type: conference

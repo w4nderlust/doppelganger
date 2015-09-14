@@ -1,0 +1,41 @@
+Title: Playing with knowledge: A virtual player for "Who Wants to Be a Millionaire?" that leverages question answering techniques
+
+----
+
+Authors: Piero Molino, Pasquale Lops, Giovanni Semeraro, Marco de Gemmis, Pierpaolo Basile
+
+----
+
+Venue: Artificial Intelligence
+
+----
+
+Year: 2015
+
+----
+
+Type: journal
+
+----
+
+Tags: Artificial Intelligence,Natural Language Processing,Distributional Semantics,Games
+
+----
+
+Paper: qna.pdf
+
+----
+
+Presentation: qna.pdf
+
+----
+
+Bibtex: http://dblp.uni-trier.de/rec/bibtex/journals/ai/MolinoLSGB15
+
+----
+
+Github: http://github.com
+
+----
+
+Arxiv: http://arxiv.com

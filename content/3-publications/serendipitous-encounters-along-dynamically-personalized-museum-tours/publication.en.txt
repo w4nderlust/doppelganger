@@ -1,0 +1,41 @@
+Title: Serendipitous Encounters along Dynamically Personalized Museum Tours
+
+----
+
+Authors: Leo Iaquinta, Marco de Gemmis, Pasquale Lops, Giovanni Semeraro, Piero Molino
+
+----
+
+Venue: IIR
+
+----
+
+Year: 2010
+
+----
+
+Tags: Serendipity,Recommender Systems
+
+----
+
+Paper: spiter@dart2010.pdf
+
+----
+
+Presentation: 
+
+----
+
+Bibtex: http://dblp.uni-trier.de/rec/bibtex/conf/iir/IaquintaGLSM10
+
+----
+
+Github: 
+
+----
+
+Arxiv: 
+
+----
+
+Type: chapter

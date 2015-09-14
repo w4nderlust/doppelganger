@@ -1,0 +1,17 @@
+Title: Empty Article 5
+
+----
+
+Date: 2015-07-28
+
+----
+
+Author: w4nderlust
+
+----
+
+Tags: rnn,knn
+
+----
+
+Text: 

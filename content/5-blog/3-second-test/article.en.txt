@@ -1,0 +1,127 @@
+Title: Main Test
+
+----
+
+Date: 2015-08-05
+
+----
+
+Author: w4nderlust
+
+----
+
+Tags: ai,semantics,cognitive,krautrock
+
+----
+
+Text: 
+
+# Primary Heading
+
+Et **turpis**? *Velit*, ~~sagittis~~, amet sit, et platea lorem, scelerisque, magna placerat, ut, vut, adipiscing, vel nunc pulvinar, rhoncus habitasse. (link: http://www.google.com text: Magnis?) Pid, mauris. Ultrices aenean in platea tincidunt natoque adipiscing, massa mid! Amet sagittis nunc egestas. A ac eu nec vel porta, mauris! (link: http://www.google.com text: Elit nec habitasse pulvinar magna!) Sit. Et hac odio placerat, augue. Amet proin lacus quis sit porttitor.
+
+## Secondary Heading
+
+A sit nascetur nec aliquet dapibus turpis penatibus? Aliquet. Cum nec penatibus, turpis augue eros aliquam elementum nec, ultrices pulvinar ridiculus aenean placerat sit quis placerat augue placerat! Est pulvinar et scelerisque quis porttitor magna est, dis natoque, elementum pulvinar, tincidunt nisi? Mauris a a ut magna placerat integer enim.
+
+### Third-level Heading
+
+Et a odio mid placerat phasellus elit egestas, augue scelerisque montes cum enim nisi dis tincidunt ut massa etiam integer nunc ac? Dis augue. Habitasse. Dolor urna placerat nisi ridiculus turpis a a ac dolor a nunc pulvinar sed! Augue tempor facilisis? Pellentesque integer! Adipiscing! Porta mauris augue, augue. Vut.
+
+#### Fourth-level Heading
+
+Odio magna purus pellentesque. In adipiscing? Tincidunt natoque, phasellus? Elementum pulvinar odio et turpis aliquam magna? Aliquam odio augue penatibus? Penatibus phasellus amet in elit! Lectus etiam, rhoncus penatibus aenean, odio nec ut vel tristique duis a nec tincidunt et, lorem arcu nisi augue, nunc, magnis ac nisi duis, porttitor.
+
+##### Fifth-level Heading
+
+In tortor dapibus nisi nunc, sagittis diam. Et, integer mattis porttitor. A. Placerat, pulvinar? Phasellus sit? Ac pellentesque, odio lacus duis in est lacus adipiscing nisi hac dapibus vel arcu mattis aenean! Aliquam, nascetur, odio magnis? Integer, tincidunt, sit! Mus placerat enim cursus penatibus. Sed dignissim arcu et habitasse diam.
+
+###### Sixth-level Heading
+
+Odio magna purus pellentesque. In adipiscing? Tincidunt natoque, phasellus? Elementum pulvinar odio et turpis aliquam magna? Aliquam odio augue penatibus? Penatibus phasellus amet in elit! Lectus etiam, rhoncus penatibus aenean, odio nec ut vel tristique duis a nec tincidunt et, lorem arcu nisi augue, nunc, magnis ac nisi duis, porttitor.
+
+### Left-align
+
+(image: prova2.jpg class: float-left width: 300 caption: prova)
+
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed odio nibh, tincidunt adipiscing, pretium nec, tincidunt id, enim. Fusce scelerisque nunc vitae nisl. Quisque quis urna in velit dictum pellentesque. Vivamus a quam. Curabitur eu tortor id turpis tristique adipiscing. Morbi blandit. Maecenas vel est. Nunc aliquam, orci at accumsan commodo, libero nibh euismod augue, a ullamcorper velit dui et purus. Aenean volutpat, ipsum ac imperdiet fermentum, dui dui suscipit arcu, vitae dictum purus diam ac ligula. Maecenas vel est. Nunc aliquam, orci at accumsan commodo, libero nibh euismod augue, a ullamcorper velit dui et purus. Aenean volutpat, ipsum ac imperdiet fermentum, dui dui suscipit arcu, vitae dictum purus diam ac ligula. Aenean volutpat, ipsum ac imperdiet fermentum, dui dui suscipit arcu, vitae dictum purus diam ac ligula. Aenean volutpat, ipsum ac imperdiet fermentum, dui dui suscipit arcu, vitae dictum purus diam ac ligula.
+
+### Right-align
+
+(image: prova3.jpg class: float-right width: 300 caption: prova)
+
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed odio nibh, tincidunt adipiscing, pretium nec, tincidunt id, enim. Fusce scelerisque nunc vitae nisl. Quisque quis urna in velit dictum pellentesque. Vivamus a quam. Curabitur eu tortor id turpis tristique adipiscing. Morbi blandit. Maecenas vel est. Nunc aliquam, orci at accumsan commodo, libero nibh euismod augue, a ullamcorper velit dui et purus. Aenean volutpat, ipsum ac imperdiet fermentum, dui dui suscipit arcu, vitae dictum purus diam ac ligula. Aenean volutpat, ipsum ac imperdiet fermentum, dui dui suscipit arcu, vitae dictum purus diam ac ligula. Maecenas vel est. Nunc aliquam, orci at accumsan commodo, libero nibh euismod augue, a ullamcorper velit dui et purus. Aenean volutpat, ipsum ac imperdiet fermentum, dui dui suscipit arcu, vitae dictum purus diam ac ligula. Aenean volutpat, ipsum ac imperdiet fermentum, dui dui suscipit arcu, vitae dictum purus diam ac ligula. Aenean volutpat, ipsum ac imperdiet fermentum, dui dui suscipit arcu, vitae dictum purus diam ac ligula.
+
+### Center-align
+
+Center-aligned image with caption, and text before and after.
+
+(image: prova.jpg class: center width: 300 caption: prova)
+
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed odio nibh, tincidunt adipiscing, pretium nec, tincidunt id, enim. Fusce scelerisque nunc vitae nisl. Quisque quis urna in velit dictum pellentesque. Vivamus a quam. Curabitur eu tortor id turpis tristique adipiscing. Morbi blandit. Maecenas vel est. Nunc aliquam, orci at accumsan commodo, libero nibh euismod augue, a ullamcorper velit dui et purus. Aenean volutpat, ipsum ac imperdiet fermentum, dui dui suscipit arcu, vitae dictum purus diam ac ligula.
+
+### No alignment
+
+None-aligned image with caption, and text before and after.
+
+(image: prova.jpg width: 300 caption: prova)
+
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed odio nibh, tincidunt adipiscing, pretium nec, tincidunt id, enim. Fusce scelerisque nunc vitae nisl. Quisque quis urna in velit dictum pellentesque. Vivamus a quam. Curabitur eu tortor id turpis tristique adipiscing. Morbi blandit. Maecenas vel est. Nunc aliquam, orci at accumsan commodo, libero nibh euismod augue, a ullamcorper velit dui et purus. Aenean volutpat, ipsum ac imperdiet fermentum, dui dui suscipit arcu, vitae dictum purus diam ac ligula.
+
+### Fotorama 100%
+
+None-aligned image with caption, and text before and after.
+
+(fotorama: prova.jpg, prova2.jpg, prova3.jpg width: 100%)
+
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed odio nibh, tincidunt adipiscing, pretium nec, tincidunt id, enim. Fusce scelerisque nunc vitae nisl. Quisque quis urna in velit dictum pellentesque. Vivamus a quam. Curabitur eu tortor id turpis tristique adipiscing. Morbi blandit. Maecenas vel est. Nunc aliquam, orci at accumsan commodo, libero nibh euismod augue, a ullamcorper velit dui et purus. Aenean volutpat, ipsum ac imperdiet fermentum, dui dui suscipit arcu, vitae dictum purus diam ac ligula.
+
+### Fotorama 50%
+
+None-aligned image with caption, and text before and after.
+
+(fotorama: prova.jpg, prova2.jpg, prova3.jpg width: 50%)
+
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed odio nibh, tincidunt adipiscing, pretium nec, tincidunt id, enim. Fusce scelerisque nunc vitae nisl. Quisque quis urna in velit dictum pellentesque. Vivamus a quam. Curabitur eu tortor id turpis tristique adipiscing. Morbi blandit. Maecenas vel est. Nunc aliquam, orci at accumsan commodo, libero nibh euismod augue, a ullamcorper velit dui et purus. Aenean volutpat, ipsum ac imperdiet fermentum, dui dui suscipit arcu, vitae dictum purus diam ac ligula.
+
+### Video
+
+None-aligned image with caption, and text before and after.
+
+(vimeo: https://vimeo.com/59561369 class: resp-video)
+
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed odio nibh, tincidunt adipiscing, pretium nec, tincidunt id, enim. Fusce scelerisque nunc vitae nisl. Quisque quis urna in velit dictum pellentesque. Vivamus a quam. Curabitur eu tortor id turpis tristique adipiscing. Morbi blandit. Maecenas vel est. Nunc aliquam, orci at accumsan commodo, libero nibh euismod augue, a ullamcorper velit dui et purus. Aenean volutpat, ipsum ac imperdiet fermentum, dui dui suscipit arcu, vitae dictum purus diam ac ligula.
+
+(youtube: https://www.youtube.com/watch?v=VXa9tXcMhXQ class: resp-video)
+
+Molti software di impaginazione e di web design utilizzano Lorem Ipsum come testo modello. Molte versioni del testo sono state prodotte negli anni, a volte casualmente, a volte di proposito (ad esempio inserendo passaggi ironici).
+
+## Other styles
+
+> Scelerisque rhoncus odio porttitor vut et quis. Nisi turpis tincidunt quis vel adipiscing et parturient. Lorem amet scelerisque scelerisque! Non. Cum vel duis. Dictumst nunc montes tristique ridiculus, turpis tincidunt, vel ac ut pulvinar rhoncus porta integer mauris ridiculus velit est proin mauris porta, integer! Placerat eu, montes. Integer turpis ac tortor eu ac risus turpis amet cras placerat etiam, cursus pulvinar integer massa! Parturient nunc? Risus parturient scelerisque in.
+
+Dignissim a sit egestas! Porttitor cursus. Facilisis, aliquet, magnis platea! In magnis eros dignissim, etiam! Ut, lectus etiam magna augue tincidunt, porta mauris dis? Mid hac augue, aliquam a hac, et egestas quis, dis sociis penatibus risus augue tempor non, ac odio, pulvinar a pulvinar, sit duis sed? Aliquet. Rhoncus facilisis, massa, pellentesque rhoncus, urna? Porta sagittis, elementum enim urna.
+
+	a:hover { /* Yep, hover is a pseudo class */ } 
+	a:before { /* Yep, before is a pseudo class too, and a fine mighty one */ } 
+	a:after { /* If you haven't already, you should look into pseudo classes. They're truly awesome */ } 
+
+Dignissim a sit egestas! Porttitor cursus. Facilisis, aliquet, magnis platea! In magnis eros dignissim, etiam! Ut, lectus etiam magna augue tincidunt, porta mauris dis? Mid hac augue, aliquam a hac, et egestas quis, dis sociis penatibus risus augue tempor non, ac odio, pulvinar a pulvinar, sit duis sed? Aliquet. Rhoncus facilisis, massa, pellentesque rhoncus, urna? Porta sagittis, elementum enim urna.
+
+1. item number 1
+2. item number 2
+3. item number 3
+4. item number 4
+5. item number 5
+6. item number 6
+
+Nunc. Eros odio et in facilisis penatibus sit eu urna cum aenean arcu dictumst tincidunt? Porta aliquet scelerisque, dolor ac, nec duis tempor tristique aliquam magna mauris aliquam a. Porta, a pulvinar, urna ac nec porta, duis adipiscing amet scelerisque.
+
+- item number 1
+- item number 2
+- item number 3
+- item number 4
+- item number 5
+- item number 6
+
+Magnis <sub>subscript</sub> tortor nunc! Placerat <sup>superscript</sup> in, in? Turpis! Nec platea adipiscing odio rhoncus turpis in. Vel. Odio Mark highlight aliquet et, odio in porta, mauris ut ultricies <del>tincidunt aenean</del> sed eu lundium CSS augue placerat mauris! Magnis nunc nunc vut nisi odio, proin, sociis tempor sed phasellus nisi. *Dictumst tempor* elementum dis ac enim cursus! Pulvinar <cite>cite</cite> turpis ultricies turpis dictumst ridiculus nec odio! Scelerisque integer, **porttitor sociis**. Vel.

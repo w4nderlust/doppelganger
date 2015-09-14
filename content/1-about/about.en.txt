@@ -1,0 +1,222 @@
+Title: About
+
+----
+
+Name: Piero Molino
+
+----
+
+Profile-image: profile_image.jpg
+
+----
+
+Street: Via Capruzzi 22
+
+----
+
+Location: Bari
+
+----
+
+Zip: 70100
+
+----
+
+Country: Italy
+----
+
+Phone: +39 329 4082689
+
+----
+
+Email: w4nderlust@gmail.com
+
+----
+
+Twitter: w4nderlus7
+
+----
+
+Biography: Being a curious mind searching for ways to bring together his different cultural interests, I am very fascinated by the interconnections between **knowledge**, **language** and **learning**. I love to search for non-obvious solutions to problems, following a **multidisciplinary approach** in order to learn new and diverse things and have new experiences. I developed strong technical skills in different fields of artificial intelligence and I am willing to apply them to challenging and interesting problems
+
+----
+
+Experience: 
+
+- 
+  role: CTO
+  company: QuestionCube
+  start_date: 2011-07-01
+  end_date: 2015-09-01
+  description: 'I founded [QuestionCube](http://www.questioncube.com), a startup working on question answering, and developed several question answering products: [Wikiedi](www.wikiedi.it), a question answering system over Wikipedia with NLP and semantic technologies (in closed Beta); [PArisponde](parisponde.questioncube.com), a government semantic search engine over FAQ Open Data (available on Apple AppStore and Google Play - Won the special prize of Apps4Italy); [AQPrisponde](www.ask2me.info), a question answering system for help desk operators'
+- 
+  role: Computational Designer
+  company: FF3300
+  start_date: 2015-03-02
+  end_date: 2015-07-31
+  description: >
+    Working on generative design and data
+    visualization on the web and mobile
+- 
+  role: Tutor
+  company: XYLab
+  start_date: 2014-07-17
+  end_date: 2014-07-31
+  description: "I was a tutor and I've been teaching about search engines at [XYLab](www.xylab.org), a workshop about new publishing, video making, hacking and network algorithms"
+- 
+  role: Research Intern
+  company: Yahoo!
+  start_date: 2013-09-01
+  end_date: 2013-12-20
+  description: >
+    I carried on a research project about
+    the adoption of semantic models and
+    network-based approaches for community
+    question answering
+- 
+  role: Programming Languages Teaching Assistant
+  company: >
+    Università degli Studi di Bari Aldo
+    Moro
+  start_date: 2012-03-05
+  end_date: 2014-06-06
+  description: "I've been tutoring and teaching the Programing Languages course of Computer Science department of the Università degli Studi di Bari Aldo Moro"
+- 
+  role: Journalist, Editor
+  company: Everyeye.it
+  start_date: 2004-09-06
+  end_date: 2007-02-09
+  description: 'I was a journalist, Head Editor of the Nintendo section, International Reporter, Director and Video Editor for [Everyeye.it](http://www.everyeye.it) (Hidedesign). I wrote more than 40 articles and 20 video-articles about video games'
+
+----
+
+Curriculum: cv-molino-piero-english.pdf
+
+----
+
+Interests: 
+
+- 
+  interest: Videogames
+  description:
+- 
+  interest: Graphic Novels
+  description:
+- 
+  interest: Literature
+  description:
+- 
+  interest: Philosophy
+  description:
+- 
+  interest: Photography
+  description:
+
+----
+
+Dblp: http://dblp.uni-trier.de/pers/hd/m/Molino:Piero
+
+----
+
+Research-gate: https://www.researchgate.net/profile/Piero_Molino
+
+----
+
+Google-scholar: https://scholar.google.it/citations?user=xckWxTsAAAAJ
+
+----
+
+Arxiv: 
+
+----
+
+Linkedin: https://it.linkedin.com/in/pieromolino
+
+----
+
+Education: 
+
+- 
+  degree: PhD
+  institution: >
+    Università degli Studi di Bari Aldo
+    Moro
+  end_date: 2015-05-15
+  notes: >
+    PhD in Computer Science with a thesis on
+    Semantic Models in Question Answering
+- 
+  degree:
+  institution: ESSIR 2013
+  end_date: 2013-09-06
+  notes: 'I attended the [European Summer School on Information Retrieval 2013](http://www.ugr.es/~essir2013/) in Granada, Spain'
+- 
+  degree:
+  institution: LXMLS 2013
+  end_date: 2013-07-28
+  notes: 'I attended the [Lisbon Machine Learning Summer School 2013](http://lxmls.it.pt/2013/) in Lisbon, Portugal'
+- 
+  degree:
+  institution: BigDive
+  end_date: 2015-07-05
+  notes: 'I attended the second edition of [BigDive](www.bigdive.eu) in Turin, Italy, a training program to boost the technical skills in big data analysis and visualization'
+- 
+  degree:
+  institution: MLSS 2012
+  end_date: 2012-09-07
+  notes: 'I attended the [Machine Learning Summer School 2012](http://www.iip.ist.i.kyoto-u.ac.jp/mlss12/doku.php?id=mlss) in Kyoto, Japan'
+- 
+  degree: Master
+  institution: >
+    Università degli Studi di Bari Aldo
+    Moro
+  end_date: 2011-10-08
+  notes: >
+    Master in Computer Science with a thesis
+    about a Question Answering framework
+- 
+  degree:
+  institution: Innovaction Lab
+  end_date: 2011-06-30
+  notes: 'I attended [InnovAction Lab](www.innovactionlab.org) Puglia, an empirical school that teaches how to evaluate the innovative potential of an idea and how to present it to private investors and companies '
+- 
+  degree: Bachelor
+  institution: >
+    Università degli Studi di Bari Aldo
+    Moro
+  end_date: 2009-07-24
+  notes: >
+    Bachelor in Computer Science with a
+    thesis about serendipity in recommender
+    systems
+
+----
+
+Skills: 
+
+- 
+  skill: Coding
+  score:
+  description: |
+    **Main**: Java, Python
+    **Some Experience**: Javascript, Processing, Objective-C, C#, PHP, R, HTML, CSS, C++, Prolog, SQL, RDF, SPARQL
+- 
+  skill: Artificial Intelligence
+  score:
+  description: 'Question Answering, Natural Language Processing, Semantics, Text Mining, Text Analytics, Information Retrieval, Search Engines, Machine Learning, Data Mining, Neural Networks,  Recommender Systems, Ranking'
+- 
+  skill: Development
+  score:
+  description: Backend, Web, Mobile, Games
+- 
+  skill: Software
+  score:
+  description: >
+    Lucene, Hadoop, CoreNLP, Numpy, gensim,
+    Scikit-learn, nltk, jQuery, WordNet,
+    Latex, Matlab, Octave, Netbeans, Xcode,
+    Unity, Photoshop
+
+----
+
+Facebook: https://www.facebook.com/prof.kenzo.kabuto

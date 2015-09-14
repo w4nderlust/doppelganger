@@ -1,0 +1,37 @@
+Title: Fourth project with longer name
+
+----
+
+Cover: bishop-aliens.jpg
+
+----
+
+Year: 2018
+
+----
+
+Client: Qualcuno
+
+----
+
+Tags: machine learning,design,ai,natural language processing
+
+----
+
+Github: 
+
+----
+
+Description: Proviamo a scrivere una descrizione sensata. Proviamo a scrivere una descrizione sensata. Proviamo a scrivere una descrizione sensata.
+
+----
+
+Gallery: 
+
+----
+
+Text: 
+
+----
+
+Collaborators: 

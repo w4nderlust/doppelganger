@@ -1,0 +1,45 @@
+Title: Third Project
+
+----
+
+Year: 1997
+
+----
+
+Tags: design,ai,concept,open source
+
+----
+
+Description: Nullam dictum felis eu pede mollis pretium. Integer tincidunt, nullam dictum felis eu pede mollis pretium. Integer tincidunt, nullam dictum felis eu pede mollis pretium. Integer tincidunt..
+
+----
+
+Github: 
+
+----
+
+Gallery: lastninja.png
+
+----
+
+Text: 
+
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
+
+Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
+
+----
+
+Collaborators: 
+
+----
+
+Cover: escher80.jpg
+
+----
+
+Client: 
+
+----
+
+Client-website: 
