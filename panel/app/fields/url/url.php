@@ -1,6 +1,12 @@
 <?php
 
-class UrlField extends InputField {
+class UrlField extends TextField {
+
+  static public $assets = array(
+    'js' => array(
+      'url.js'
+    )
+  );
 
   public function __construct() {
 
@@ -13,6 +19,12 @@ class UrlField extends InputField {
 
   public function validate() {
     return v::url($this->value());
+  }
+
+  public function input() {
+    $input = parent::input();
+    $input->data('field', 'urlfield');
+    return $input;
   }
 
 }

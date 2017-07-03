@@ -56,6 +56,16 @@ field::$methods['markdown'] = field::$methods['md'] = function($field) {
 };
 
 /**
+ * Parses the field value with SmartyPants
+ * @param Field $field The calling Kirby Field instance
+ * @return Field
+ */
+field::$methods['smartypants'] = field::$methods['sp'] = function($field) {
+  $field->value = smartypants($field->value);
+  return $field;
+};
+
+/**
  * Converts the field value to lower case
  * @param Field $field The calling Kirby Field instance
  * @return Field
@@ -172,20 +182,19 @@ field::$methods['toPage'] = function($field) {
 };
 
 /**
- * Returns all page objects from a yaml list in a field
+ * Returns all page objects from a yaml list or a $sep separated string in a field
  * @param Field $field The calling Kirby Field instance
  * @return Collection
  */
-field::$methods['pages'] = field::$methods['toPages'] = function($field) {
+field::$methods['pages'] = field::$methods['toPages'] = function($field, $sep = null) {
 
-  $related = array();
-
-  foreach($field->yaml() as $r) {
-    // make sure to only add found related pages
-    if($rel = page($r)) $related[$rel->id()] = $rel;
+  if($sep !== null) {
+    $array = $field->split($sep);
+  } else {
+    $array = $field->yaml();
   }
 
-  return new Collection($related);
+  return pages($array);
 
 };
 
@@ -245,6 +254,17 @@ field::$methods['int'] = function($field, $default = 0) {
   return intval($val);
 }; 
 
+/**
+ * Get a float value for the Field
+ * @param Field $field The calling Kirby Field instance
+ * @param int $default Default value returned if field is empty
+ * @return float
+ */
+field::$methods['float'] = function($field, $default = 0) {
+  $val = $field->empty() ? $default : $field->value;
+  return floatval($val);
+};
+
 field::$methods['toStructure'] = field::$methods['structure'] = function($field) {
   return structure($field->yaml(), $field->page());
 };
@@ -262,4 +282,8 @@ field::$methods['link'] = function($field, $attr1 = array(), $attr2 = array()) {
 
   return $a;
 
+};
+
+field::$methods['toUrl'] = field::$methods['url'] = function($field) {
+  return url($field->value());
 };

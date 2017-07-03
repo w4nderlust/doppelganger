@@ -18,7 +18,8 @@
  */
 abstract class PageAbstract {
 
-  static public $models = array();
+  static public $models  = array();
+  static public $methods = array();
 
   public $kirby;
   public $site;
@@ -193,10 +194,13 @@ abstract class PageAbstract {
    * @return string
    */
   public function tinyurl() {
-    if(!$this->kirby->options['tinyurl.enabled']) {
+    if(!isset($this->kirby->options['tinyurl.enabled']) || !$this->kirby->options['tinyurl.enabled']) {
       return $this->url();
     } else {
-      return url($this->kirby->options['tinyurl.folder'] . '/' . $this->hash());
+      // try to use tinyurl.url first, otherwise use tinyurl.folder
+      $base = a::get($this->kirby->options, 'tinyurl.url');
+      if(!$base) $base = a::get($this->kirby->options, 'tinyurl.folder');
+      return url($base . '/' . $this->hash());
     }
   }
 
@@ -231,26 +235,26 @@ abstract class PageAbstract {
   }
 
   /**
-   * Returns the cache id
-   *
-   * @return string
-   */
-  public function cacheId() {
-    return sha1($this->id());
-  }
-
-  /**
    * Checks if the page can be cached
    *
    * @return boolean
    */
   public function isCachable() {
+
+    // The error page should not be cached
+    if($this->isErrorPage()) {
+      return false;
+    }
+
+    $lang = ($this->site->defaultLanguage())? $this->site->defaultLanguage()->code : null;
     foreach($this->kirby->option('cache.ignore') as $pattern) {
-      if(fnmatch($pattern, $this->uri()) === true) {
+      if(fnmatch($pattern, $this->uri($lang)) === true) {
         return false;
       }
     }
+
     return true;
+
   }
 
   /**
@@ -303,7 +307,15 @@ abstract class PageAbstract {
       'files'    => array(),
     );
 
+    // normalize the filename if possible
+    if($this->kirby->option('content.file.normalize') && class_exists('Normalizer')) {
+      $items = array_map('Normalizer::normalize', $items);
+    }
+
     foreach($items as $item) {
+
+      // skip any invisible files and folders
+      if(substr($item, 0, 1) === '.') continue;
 
       $root = $this->root . DS . $item;
 
@@ -435,8 +447,9 @@ abstract class PageAbstract {
    * @param string $direction An optional sort direction
    * @return mixed Page or null
    */
-  protected function _next(Children $siblings, $sort = false, $direction = 'asc', $visibility = false) {
-    if($sort) $siblings = $siblings->sortBy($sort, $direction);
+  protected function _next(Children $siblings, $sort = array(), $visibility = false) {
+
+    if($sort) $siblings = call(array($siblings, 'sortBy'), $sort);
     $index = $siblings->indexOf($this);
     if($index === false) return null;
     if($visibility) {
@@ -456,8 +469,8 @@ abstract class PageAbstract {
    * @param string $direction An optional sort direction
    * @return mixed Page or null
    */
-  protected function _prev(Children $siblings, $sort = false, $direction = 'asc', $visibility = false) {
-    if($sort) $siblings = $siblings->sortBy($sort, $direction);
+  protected function _prev(Children $siblings, $sort = array(), $visibility = false) {
+    if($sort) $siblings = call(array($siblings, 'sortBy'), $sort);
     $index = $siblings->indexOf($this);
     if($index === false or $index === 0) return null;
     if($visibility) {
@@ -474,8 +487,8 @@ abstract class PageAbstract {
    *
    * @return Page
    */
-  public function next($sort = false, $direction = 'asc') {
-    return $this->_next($this->parent->children(), $sort, $direction);
+  public function next() {
+    return $this->_next($this->parent->children(), func_get_args());
   }
 
   /**
@@ -485,8 +498,8 @@ abstract class PageAbstract {
    * @param string $direction An optional sort direction
    * @return boolean
    */
-  public function hasNext($sort = false, $direction = 'asc') {
-    return $this->next($sort, $direction) != null;
+  public function hasNext() {
+    return call(array($this, 'next'), func_get_args()) != null;
   }
 
   /**
@@ -496,11 +509,11 @@ abstract class PageAbstract {
    * @param string $direction An optional sort direction
    * @return mixed Page or null
    */
-  public function nextVisible($sort = false, $direction = 'asc') {
+  public function nextVisible() {
     if(!$this->parent) {
       return null;
     } else {
-      return $this->_next($this->parent->children(), $sort, $direction, 'visible');      
+      return $this->_next($this->parent->children(), func_get_args(), 'visible');
     }
   }
 
@@ -511,8 +524,8 @@ abstract class PageAbstract {
    * @param string $direction An optional sort direction
    * @return boolean
    */
-  public function hasNextVisible($sort = false, $direction = 'asc') {
-    return $this->nextVisible($sort, $direction) != null;
+  public function hasNextVisible() {
+    return call(array($this, 'nextVisible'), func_get_args()) != null;
   }
 
   /**
@@ -522,11 +535,11 @@ abstract class PageAbstract {
    * @param string $direction An optional sort direction
    * @return mixed Page or null
    */
-  public function nextInvisible($sort = false, $direction = 'asc') {
+  public function nextInvisible() {
     if(!$this->parent) {
       return null;
     } else {
-      return $this->_next($this->parent->children(), $sort, $direction, 'invisible');
+      return $this->_next($this->parent->children(), func_get_args(), 'invisible');
     }
   }
 
@@ -537,8 +550,8 @@ abstract class PageAbstract {
    * @param string $direction An optional sort direction
    * @return boolean
    */
-  public function hasNextInvisible($sort = false, $direction = 'asc') {
-    return $this->nextInvisible($sort, $direction) != null;
+  public function hasNextInvisible() {
+    return call(array($this, 'nextInvisible'), func_get_args()) != null;
   }
 
   /**
@@ -546,8 +559,8 @@ abstract class PageAbstract {
    *
    * @return Page
    */
-  public function prev($sort = false, $direction = 'asc') {
-    return $this->_prev($this->parent->children(), $sort, $direction);
+  public function prev() {
+    return $this->_prev($this->parent->children(), func_get_args());
   }
 
   /**
@@ -557,8 +570,8 @@ abstract class PageAbstract {
    * @param string $direction An optional sort direction
    * @return boolean
    */
-  public function hasPrev($sort = false, $direction = 'asc') {
-    return $this->prev($sort, $direction) != null;
+  public function hasPrev() {
+    return call(array($this, 'prev'), func_get_args()) != null;
   }
 
   /**
@@ -568,11 +581,11 @@ abstract class PageAbstract {
    * @param string $direction An optional sort direction
    * @return mixed Page or null
    */
-  public function prevVisible($sort = false, $direction = 'asc') {
+  public function prevVisible() {
     if(!$this->parent) {
       return null;
     } else {
-      return $this->_prev($this->parent->children(), $sort, $direction, 'visible');
+      return $this->_prev($this->parent->children(), func_get_args(), 'visible');
     }
   }
 
@@ -583,8 +596,8 @@ abstract class PageAbstract {
    * @param string $direction An optional sort direction
    * @return boolean
    */
-  public function hasPrevVisible($sort = false, $direction = 'asc') {
-    return $this->prevVisible($sort, $direction) != null;
+  public function hasPrevVisible() {
+    return call(array($this, 'prevVisible'), func_get_args()) != null;
   }
 
   /**
@@ -594,11 +607,11 @@ abstract class PageAbstract {
    * @param string $direction An optional sort direction
    * @return mixed Page or null
    */
-  public function prevInvisible($sort = false, $direction = 'asc') {
+  public function prevInvisible() {
     if(!$this->parent) {
       return null;
     } else {
-      return $this->_prev($this->parent->children(), $sort, $direction, 'invisible');
+      return $this->_prev($this->parent->children(), func_get_args(), 'invisible');
     }
   }
 
@@ -609,8 +622,8 @@ abstract class PageAbstract {
    * @param string $direction An optional sort direction
    * @return boolean
    */
-  public function hasPrevInvisible($sort = false, $direction = 'asc') {
-    return $this->prevInvisible($sort, $direction) != null;
+  public function hasPrevInvisible() {
+    return call(array($this, 'prevInvisible'), func_get_args()) != null;
   }
 
   /**
@@ -672,11 +685,34 @@ abstract class PageAbstract {
 
   /**
    * Returns a single image
+   * 
+   * @return File
    */
   public function image($filename = null) {
     if(is_null($filename)) return $this->images()->first();
     return $this->images()->find($filename);
   }
+
+  /**
+   * Returns a single video
+   * 
+   * @return File
+   */
+  public function video($filename = null) {
+    if(is_null($filename)) return $this->videos()->first();
+    return $this->videos()->find($filename);
+  }
+
+  /**
+   * Returns a single document
+   * 
+   * @return File
+   */
+  public function document($filename = null) {
+    if(is_null($filename)) return $this->documents()->first();
+    return $this->documents()->find($filename);
+  }
+
 
   /**
    * Returns the content object for this page
@@ -715,18 +751,18 @@ abstract class PageAbstract {
    *
    * @param string $format
    * @param string $field
-   * @return string
+   * @return mixed
    */
   public function date($format = null, $field = 'date') {
 
     if($timestamp = strtotime($this->content()->$field())) {
-
       if(is_null($format)) {
         return $timestamp;
       } else {
         return $this->kirby->options['date.handler']($format, $timestamp);
       }
-
+    } else {
+      return false;
     }
 
   }
@@ -751,20 +787,30 @@ abstract class PageAbstract {
    * @return Field
    */
   public function __call($key, $arguments = null) {
-    return isset($this->$key) ? $this->$key : $this->content()->get($key, $arguments);
+    if(isset($this->$key)) {
+      return $this->$key;
+    } else if(isset(static::$methods[$key])) {
+      if(!$arguments) $arguments = array();
+      array_unshift($arguments, clone $this);
+      return call(static::$methods[$key], $arguments);
+    } else {
+      return $this->content()->get($key, $arguments);
+    }
   }
 
   /**
    * Alternative for $this->equals()
    */
-  public function is(Page $page) {
+  public function is($page) {
+    if(!is_a($page, 'Page')) $page = page($page);
+
     return $this->id() == $page->id();
   }
 
   /**
    * Alternative for $this->is()
    */
-  public function equals(Page $page) {
+  public function equals($page) {
     return $this->is($page);
   }
 
@@ -844,7 +890,9 @@ abstract class PageAbstract {
    * @param object Page the page object to check
    * @return boolean
    */
-  public function isChildOf(Page $page) {
+  public function isChildOf($page) {
+    if(!is_a($page, 'Page')) $page = page($page);
+
     return $this->is($page) ? false : $this->parent->is($page);
   }
 
@@ -854,7 +902,9 @@ abstract class PageAbstract {
    * @param object Page the page object to check
    * @return boolean
    */
-  public function isParentOf(Page $page) {
+  public function isParentOf($page) {
+    if(!is_a($page, 'Page')) $page = page($page);
+
     return $this->is($page) ? false : $page->parent->is($this);
   }
 
@@ -864,7 +914,9 @@ abstract class PageAbstract {
    * @param object Page the page object to check
    * @return boolean
    */
-  public function isDescendantOf(Page $page) {
+  public function isDescendantOf($page) {
+    if(!is_a($page, 'Page')) $page = page($page);
+
     return $this->is($page) ? false : $this->parents()->has($page);
   }
 
@@ -958,11 +1010,56 @@ abstract class PageAbstract {
     // get the template name
     $templateName = $this->intendedTemplate();
 
-    // check if the file exists and return the appropriate template name
-    return $this->cache['template'] =
-      file_exists($this->kirby->roots()->templates() . DS . $templateName . '.php') ?
-        $templateName : 'default';
+    if($this->kirby->registry->get('template', $templateName)) {
+      return $this->cache['template'] = $templateName;  
+    } else {
+      return $this->cache['template'] = 'default';
+    }
 
+  }
+
+  /**
+   * Returns the representation file extension for the page
+   *
+   * @param string $template Template name to use as base
+   * @return string/false
+   */
+  public function representation($template = null) {
+    if(!$template) $template = $this->template();
+    $cacheKey = 'representation.' . $template;
+
+    // check for a cached representation
+    if(isset($this->cache[$cacheKey])) return $this->cache[$cacheKey];
+
+    // check for a representation from the URL
+    if($this->site->representation && $this->kirby->registry->get('template', $template . '.' . $this->site->representation)) {
+      return $this->cache[$cacheKey] = $this->site->representation;
+    }
+
+    // try to get a representation from the Accept header
+    // this feature is disabled by default because some browsers
+    // have strange Accept headers (e.g. WebKit)
+    if($this->kirby->option('representations.accept')) {
+      // manually add the normal template to the mix as HTML representation
+      $representations = ['__default' => visitor::acceptance('text/html')];
+
+      // add each other available representation
+      foreach($this->kirby->registry->get('template', $template, true) as $representation) {
+        $representation = f::extension($representation);
+        $mime           = f::extensionToMime($representation);
+
+        $representations[$representation] = visitor::acceptance($mime);
+      }
+
+      // return the highest accepted representation
+      if(!empty($representations) && ($max = max($representations)) > 0) {
+        $representation = array_search($max, $representations);
+        if($representation === '__default') $representation = false;
+        return $this->cache[$cacheKey] = $representation;
+      }
+    }
+
+    return $this->cache[$cacheKey] = false;
   }
 
   /**
@@ -971,7 +1068,30 @@ abstract class PageAbstract {
    * @return string
    */
   public function templateFile() {
-    return $this->kirby->roots()->templates() . DS . $this->template() . '.php';
+    return $this->_templateFile($this->intendedTemplate());
+  }
+
+  /**
+   * Internal helper method
+   *
+   * @param string $template Template name to use as base
+   * @return string
+   */
+  protected function _templateFile($template) {
+    $representation = $this->representation($template);
+
+    if($representation) {
+      return $this->kirby->registry->get('template', $template . '.' . $representation);
+    } else {
+      if($template = $this->kirby->registry->get('template', $template)) {
+        return $template;
+      } else if($template !== 'default' && $template !== null) {
+        // try to get a representation of the default template
+        return $this->_templateFile('default');
+      } else {
+        return $this->kirby->registry->get('template', 'default');
+      }
+    }
   }
 
   /**
@@ -1001,7 +1121,7 @@ abstract class PageAbstract {
    * @return string
    */
   public function intendedTemplateFile() {
-    return $this->kirby->roots()->templates() . DS . $this->intendedTemplate() . '.php';
+    return $this->kirby->component('template')->file($this->intendedTemplate());
   }
 
   /**
@@ -1033,6 +1153,11 @@ abstract class PageAbstract {
 
     } else if($this->isErrorPage()) {
       header::notfound();
+    }
+
+    // send the header of the representation
+    if($representation = $this->representation()) {
+      if($mime = f::extensionToMime($representation)) header::type($mime);
     }
 
   }
@@ -1069,6 +1194,9 @@ abstract class PageAbstract {
       $num = false;
       $dir = $uid;
     }
+
+    // make sure to check a fresh page
+    $parent->reset();
 
     if($parent->children()->findBy('uid', $uid)) {
       throw new Exception('The page UID exists');
@@ -1116,6 +1244,12 @@ abstract class PageAbstract {
       throw new Exception('The new page object could not be found');
     }
 
+    // let's create a model if one is defined
+    if(isset(static::$models[$template])) {
+      $model = static::$models[$template];
+      $page = new $model($page->parent(), $page->dirname());
+    }
+
     kirby::instance()->cache()->flush();
 
     return $page;
@@ -1127,9 +1261,9 @@ abstract class PageAbstract {
    *
    * @param array
    */
-  public function update($data = array()) {
+  public function update($input = array()) {
 
-    $data = array_merge($this->content()->toArray(), $data);
+    $data = a::update($this->content()->toArray(), $input);
 
     if(!data::write($this->textfile(), $data, 'kd')) {
       throw new Exception('The page could not be updated');
@@ -1140,6 +1274,42 @@ abstract class PageAbstract {
     $this->touch();
     return true;
 
+  }
+
+  /**
+   * Increment a field value by one or a given value
+   * 
+   * @param string $field
+   * @param int $by
+   * @param int $max
+   * @return Page
+   */
+  public function increment($field, $by = 1, $max = null) {
+    $this->update(array(
+      $field => function($value) use($by, $max) {
+        $new = (int)$value + $by;
+        return ($max and $new >= $max) ? $max : $new;
+      }
+    ));
+    return $this;
+  }
+
+  /**
+   * Decrement a field value by one or a given value
+   * 
+   * @param string $field
+   * @param int $by
+   * @param int $min
+   * @return Page
+   */
+  public function decrement($field, $by = 1, $min = 0) {
+    $this->update(array(
+      $field => function($value) use($by, $min) {
+        $new = (int)$value - $by;
+        return $new <= $min ? $min : $new;
+      }
+    ));
+    return $this;
   }
 
   /**
@@ -1185,10 +1355,12 @@ abstract class PageAbstract {
   }
 
   /**
-   * Changes the prepended number for the page
+   * Return the prepended number for the page
+   * or changes it to the number passed as parameter 
    */
-  public function sort($num) {
+  public function sort($num = null) {
 
+    if(!$num and $num !== 0) return $this->num();
     if($num === $this->num()) return true;
 
     $dir  = $num . '-' . $this->uid();
@@ -1275,33 +1447,71 @@ abstract class PageAbstract {
    */
   public function toArray($callback = null) {
 
-    $data = array(
-      'id'               => $this->id(),
+    $data = [
       'title'            => $this->title()->toString(),
+      'id'               => $this->id(),
+      'uid'              => $this->uid(),
+      'slug'             => $this->slug(),
       'parent'           => $this->parent()->uri(),
-      'dirname'          => $this->dirname(),
-      'diruri'           => $this->diruri(),
+      'uri'              => $this->uri(),
       'url'              => $this->url(),
       'contentUrl'       => $this->contentUrl(),
       'tinyUrl'          => $this->tinyUrl(),
-      'depth'            => $this->depth(),
-      'uri'              => $this->uri(),
       'root'             => $this->root(),
-      'uid'              => $this->uid(),
-      'slug'             => $this->slug(),
+      'dirname'          => $this->dirname(),
+      'diruri'           => $this->diruri(),
+      'depth'            => $this->depth(),
       'num'              => $this->num(),
       'hash'             => $this->hash(),
-      'modified'         => $this->modified(),
+      'modified'         => $this->modified('c'),
       'template'         => $this->template(),
       'intendedTemplate' => $this->intendedTemplate(),
+      'isVisible'        => $this->isVisible(),
+      'isOpen'           => $this->isOpen(),
+      'isActive'         => $this->isActive(),
+      'isHomePage'       => $this->isHomePage(),
+      'isErrorPage'      => $this->isErrorPage(),
+      'isCachable'       => $this->isCachable(),
+      'isWritable'       => $this->isWritable(),
       'content'          => $this->content()->toArray(),
-    );
+      'headers'          => $this->headers(),
+    ];
 
     if(is_null($callback)) {
       return $data;
-    } else {
-      return array_map($callback, $data);
+    } else if(is_callable($callback)) {
+      return $callback($this);
     }
+
+  }
+
+  /**
+   * Tries to find a controller for
+   * the current page and loads the data
+   *
+   * @return array
+   */
+  public function controller($arguments = array()) {
+
+    // first try to get a controller for the representation
+    $controller = null;
+    if($representation = $this->representation()) {
+      $controller = $this->kirby->registry->get('controller', $this->template() . '.' . $representation);
+    }
+
+    // no representation or no special controller: try the normal one
+    if(!$controller) $controller = $this->kirby->registry->get('controller', $this->template());
+
+    if(is_a($controller, 'Closure')) {
+      return (array)call_user_func_array($controller, array(
+        $this->site,
+        $this->site->children(),
+        $this,
+        $arguments
+      ));
+    }
+
+    return array();
 
   }
 
@@ -1323,6 +1533,23 @@ abstract class PageAbstract {
    */
   public function __toString() {
     return (string)$this->id();
+  }
+
+  /**
+   * Improved var_dump() output
+   * 
+   * @return array
+   */
+  public function __debuginfo() {
+
+    $data = $this->toArray();
+
+    return array_merge($data, [
+      'content'    => $this->content(),
+      'children'   => $this->children(),
+      'siblings'   => $this->siblings(false),
+      'files'      => $this->files(),
+    ]);
   }
 
 }

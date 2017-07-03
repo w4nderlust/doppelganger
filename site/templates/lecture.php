@@ -9,7 +9,7 @@
       <li class="tags">Tags:
       <?php foreach (explode(",", $page->tags()) as $tag): ?>
         <?php $clean_tag = str_replace(" ", "_", $tag) ?>
-        <strong class="tag" style="border-bottom: 3px solid <?php echo $GLOBALS['color_map'][$clean_tag] ?>;"><?php echo $tag ?></strong>
+        <strong class="tag" style="border-bottom: 3px solid black;"><?php echo $tag ?></strong>
       <?php endforeach ?>
       </li>
     </ul>
@@ -37,9 +37,15 @@
 
       <?php echo $page->text()->kirbytext() ?>
 
-      <hr />
+      <?php if (!$page->slides()->isEmpty()): ?>
+          <p>
+            <a id="download_slides" class="button" href="<?php echo $page->files()->find($page->slides())->url() ?>" target="_blank">Download Slides</a>
+            <a id="preview_slides" class="button">Preview</a>
+          </p>
+      <?php endif ?> 
 
-      <iframe class="slides" src="/assets/javascript/ViewerJS/?zoom=page-width#<?php echo $page->files()->find($page->slides())->url() ?>" allowfullscreen webkitallowfullscreen></iframe>
+      <div id="slides_container" style="display: none;"></div>
+
     </div>
 
   </main>

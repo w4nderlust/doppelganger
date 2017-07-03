@@ -20,6 +20,9 @@ abstract class ContentAbstract {
 
   /**
    * Constructor
+   * 
+   * @param Page $page
+   * @param string $root
    */
   public function __construct($page, $root) {
 
@@ -123,19 +126,53 @@ abstract class ContentAbstract {
       return $this->data[$key];
     } else {
       // return an empty field as default
-      return $this->data[$key] = new Field($this->page, $key);
+      return new Field($this->page, $key);
     }
 
   }
 
+  /**
+   * Checks if a field exists
+   * 
+   * @param string $key
+   * @return boolean
+   */
+  public function has($key) {
+    return isset($this->data[strtolower($key)]);
+  }
+
+  /**
+   * Magic getter
+   * 
+   * @param string $method
+   * @param array $arguments Not used
+   * @return Field
+   */
   public function __call($method, $arguments = null) {
     return $this->get($method, $arguments);
   }
 
+  /**
+   * Returns all fields as plain array
+   * 
+   * @return array
+   */
   public function toArray() {
     return array_map(function($item) {
       return $item->value;
     }, $this->data);
+  }
+
+  /**
+   * Improved var_dump() output
+   * 
+   * @return array
+   */
+  public function __debuginfo() {
+    return [
+      'root'   => $this->root(),
+      'fields' => $this->toArray(),
+    ];
   }
 
 }

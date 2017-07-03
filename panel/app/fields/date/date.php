@@ -6,12 +6,7 @@ class DateField extends InputField {
 
   static public $assets = array(
     'js' => array(
-      'moment.min.js',
-      'pikaday.min.js',
       'date.js'
-    ),
-    'css' => array(
-      'pikaday.css'
     )
   );
 
@@ -25,7 +20,8 @@ class DateField extends InputField {
   }
 
   public function format() {
-    return str::upper($this->format);
+    $format = str::upper($this->format);
+    return empty($format) ? 'YYYY-MM-DD' : $format;
   }
 
   public function validate() {
@@ -46,13 +42,13 @@ class DateField extends InputField {
     $input->data(array(
       'field'  => 'date',
       'format' => $this->format(),
-      'i18n'   => html(json_encode(array(
+      'i18n'   => json_encode(array(
         'previousMonth' => '&lsaquo;',
         'nextMonth'     => '&rsaquo;',
         'months'        => l::get('fields.date.months'),
         'weekdays'      => l::get('fields.date.weekdays'),
         'weekdaysShort' => l::get('fields.date.weekdays.short')
-      )), false)
+      ))
     ));
 
     $hidden = new Brick('input', null);

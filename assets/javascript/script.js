@@ -97,6 +97,18 @@ $(document).ready(function() {
         });
     });
 
+    // ----- TEACHING -----
+
+    $("#preview_slides").click(function() {
+        var slide_container = $("#slides_container")
+        if (!$.trim(slide_container.html())) {  // if it's empty
+            slide_container.append("<hr />");
+            slide_container.append('<iframe class="slides" src="/assets/javascript/ViewerJS/?zoom=page-width#' + $("#download_slides").attr('href') + '" allowfullscreen webkitallowfullscreen></iframe>');
+            slide_container.slideToggle(500);
+            $("#preview_slides").fadeOut(500);
+        }
+    });
+
     // ----- PUBLICATIONS -----
 
     var side_width = 10;

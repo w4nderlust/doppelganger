@@ -62,7 +62,7 @@ abstract class PagesAbstract extends Collection {
   public function not() {
     $collection = clone $this;
     foreach(func_get_args() as $uri) {
-      if(is_array($uri)) {
+      if(is_array($uri) or $uri instanceof Traversable) {
         foreach($uri as $u) {
           $collection = $collection->not($u);
         }
@@ -84,9 +84,15 @@ abstract class PagesAbstract extends Collection {
 
     $args = func_get_args();
 
+    if(count($args) === 1 and is_array($args[0])) {
+      $args = $args[0];
+    }
+
     if(!count($args)) {
       return false;
-    } else if(count($args) > 1) {
+    }
+
+    if(count($args) > 1) {
       $pages = new static();
       foreach($args as $id) {
         if($page = $this->find($id)) {
@@ -157,7 +163,7 @@ abstract class PagesAbstract extends Collection {
    */
   public function has($page) {
     $uri = is_string($page) ? $page : $page->id();
-    return isset($this->data[$uri]);
+    return parent::has($uri);
   }
 
   /**
@@ -234,6 +240,68 @@ abstract class PagesAbstract extends Collection {
   }
 
   /**
+   * Returns files from all pages
+   *
+   * @return object A collection of all files of the pages (not of their subpages)
+   */
+  public function files() {
+    
+    $files = new Collection();
+
+    foreach($this->data as $page) {
+      foreach($page->files() as $file) {
+        $files->append($page->id() . '/' . strtolower($file->filename()), $file);        
+      }
+    }
+
+    return $files;
+
+  }
+
+  // File type filters
+  public function images()    { return $this->files()->filterBy('type', 'image');    }
+  public function videos()    { return $this->files()->filterBy('type', 'video');    }
+  public function documents() { return $this->files()->filterBy('type', 'document'); }
+  public function audio()     { return $this->files()->filterBy('type', 'audio');    }
+  public function code()      { return $this->files()->filterBy('type', 'code');     }
+  public function archives()  { return $this->files()->filterBy('type', 'archive');  }
+
+  /**
+   * Groups the pages by a given field
+   *
+   * @param string $field
+   * @param bool   $i (ignore upper/lowercase for group names)
+   * @return object A collection with an item for each group and a Pages object for each group
+   */
+  public function groupBy($field, $i = true) {
+
+    $groups = array();
+
+    foreach($this->data as $key => $item) {
+
+      $value = $item->content()->get($field)->value();
+
+      // make sure that there's always a proper value to group by
+      if(!$value) throw new Exception('Invalid grouping value for key: ' . $key);
+
+      // ignore upper/lowercase for group names
+      if($i) $value = str::lower($value);
+
+      if(!isset($groups[$value])) {
+        // create a new entry for the group if it does not exist yet
+        $groups[$value] = new Pages(array($key => $item));
+      } else {
+        // add the item to an existing group
+        $groups[$value]->set($key, $item);
+      }
+
+    }
+
+    return new Collection($groups);
+
+  }
+
+  /**
    * Converts the pages collection
    * into a plain array
    * 
@@ -257,6 +325,15 @@ abstract class PagesAbstract extends Collection {
    */
   public function toJson($callback = null) {
     return json_encode($this->toArray($callback));
+  }
+
+  /**
+   * Improved var_dump() output
+   * 
+   * @return array
+   */
+  public function __debuginfo() {
+    return $this->pluck('id');
   }
 
 }
