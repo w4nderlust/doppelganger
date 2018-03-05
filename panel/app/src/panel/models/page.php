@@ -550,9 +550,11 @@ class Page extends \Page {
     if($newTemplate == $oldTemplate) return true;
 
     if($this->site()->multilang()) {
-      
-      foreach($this->site()->languages() as $lang) {
-        $old = $this->textfile(null, $lang->code());
+
+      // make sure to update the default language first
+      // otherwise updating the content file won't work properly
+      foreach($this->site()->languages()->sortBy('isDefault', 'desc') as $lang) {
+        $old = $this->textfile($oldTemplate, $lang->code());
         $new = $this->textfile($newTemplate, $lang->code());
         f::move($old, $new);
         $this->reset();
